@@ -617,26 +617,30 @@ app.include_router(api_router)
 frontend_url = os.environ.get("FRONTEND_URL", "")
 cors_origins_env = os.environ.get("CORS_ORIGINS", "")
 
-# Use CORS_ORIGINS if set to *, otherwise build from FRONTEND_URL
-if cors_origins_env == "*":
-    cors_origins = ["*"]
-elif cors_origins_env:
-    cors_origins = [origin.strip() for origin in cors_origins_env.split(",") if origin.strip()]
-else:
-    cors_origins = [
-        frontend_url,
-        "http://localhost:3000",
-        "http://localhost:8000",
-        "http://127.0.0.1:3000",
-        "http://127.0.0.1:8000",
-    ]
-    # Filter out empty strings
-    cors_origins = [origin for origin in cors_origins if origin]
+# Build CORS origins list - always include common development URLs
+cors_origins = [
+    frontend_url,
+    "https://code-explorer-192.preview.emergentagent.com",  # Emergent code explorer
+    "http://localhost:3000",
+    "http://localhost:8000",
+    "http://127.0.0.1:3000",
+    "http://127.0.0.1:8000",
+]
+
+# Add any additional origins from environment
+if cors_origins_env and cors_origins_env != "*":
+    cors_origins.extend([origin.strip() for origin in cors_origins_env.split(",") if origin.strip()])
+
+# Filter out empty strings and duplicates
+cors_origins = list(set([origin for origin in cors_origins if origin]))
+
+# Log CORS configuration for debugging
+logger.info(f"CORS Origins configured: {cors_origins}")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_credentials=True if cors_origins != ["*"] else False,
-    allow_origins=cors_origins if cors_origins else ["*"],
+    allow_credentials=True,
+    allow_origins=cors_origins,
     allow_methods=["*"],
     allow_headers=["*"],
 )
