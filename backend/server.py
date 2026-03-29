@@ -608,26 +608,34 @@ async def startup():
     if not await db.settings.find_one({}):
         await db.settings.insert_one({"hotel_name": "Best Western Imperio", "address": "Bye Pass, Raipur Road, Hisar, Haryana", "phone": "+91 123 456 7890", "email": "info@bwimperio.com", "logo_url": ""})
     # Write test credentials
-    creds_path = ROOT_DIR / "app" / "memory" / "test_credentials.md"
+    creds_path = Path("/app/memory/test_credentials.md")
     creds_path.parent.mkdir(parents=True, exist_ok=True)
     creds_path.write_text(f"# Test Credentials\n\n## Admin\n- Email: {admin_email}\n- Password: {admin_password}\n- Role: admin\n\n## Endpoints\n- Login: POST /api/auth/login\n- Me: GET /api/auth/me\n- Logout: POST /api/auth/logout\n")
 
 app.include_router(api_router)
 
 frontend_url = os.environ.get("FRONTEND_URL", "")
-cors_origins = [
-    frontend_url,
-    "http://localhost:3000",
-    "http://localhost:8000",
-    "http://127.0.0.1:3000",
-    "http://127.0.0.1:8000",
-]
-# Filter out empty strings
-cors_origins = [origin for origin in cors_origins if origin]
+cors_origins_env = os.environ.get("CORS_ORIGINS", "")
+
+# Use CORS_ORIGINS if set to *, otherwise build from FRONTEND_URL
+if cors_origins_env == "*":
+    cors_origins = ["*"]
+elif cors_origins_env:
+    cors_origins = [origin.strip() for origin in cors_origins_env.split(",") if origin.strip()]
+else:
+    cors_origins = [
+        frontend_url,
+        "http://localhost:3000",
+        "http://localhost:8000",
+        "http://127.0.0.1:3000",
+        "http://127.0.0.1:8000",
+    ]
+    # Filter out empty strings
+    cors_origins = [origin for origin in cors_origins if origin]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_credentials=True,
+    allow_credentials=True if cors_origins != ["*"] else False,
     allow_origins=cors_origins if cors_origins else ["*"],
     allow_methods=["*"],
     allow_headers=["*"],
