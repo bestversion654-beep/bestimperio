@@ -8,7 +8,7 @@ const categories = ["All", "Hotel", "Rooms", "Restaurant", "Reception"];
 
 const galleryImages = [
   {
-    src: "https://customer-assets.emergentagent.com/job_imperio-luxury/artifacts/ooypb31c_bc1f036e726111e799540a4cef95d023.jpg",
+    src: "https://customer-assets.emergentagent.com/job_code-explorer-192/artifacts/57xesbms_Screenshot%202026-03-29%20183024.png",
     alt: "Hotel Exterior",
     category: "Hotel",
     height: "h-80"
@@ -16,6 +16,12 @@ const galleryImages = [
   {
     src: "https://customer-assets.emergentagent.com/job_imperio-luxury/artifacts/980zdopb_c0ce331a7c5311e894780266fbcf4d94.jpg",
     alt: "Deluxe Room",
+    category: "Rooms",
+    height: "h-72"
+  },
+  {
+    src: "https://customer-assets.emergentagent.com/job_code-explorer-192/artifacts/iflp1ojs_Screenshot%202026-03-29%20181047.png",
+    alt: "Executive Room",
     category: "Rooms",
     height: "h-72"
   },

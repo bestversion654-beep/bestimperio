@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 
-const HERO_IMG = "https://customer-assets.emergentagent.com/job_imperio-luxury/artifacts/ooypb31c_bc1f036e726111e799540a4cef95d023.jpg";
+const HERO_IMG = "https://customer-assets.emergentagent.com/job_code-explorer-192/artifacts/57xesbms_Screenshot%202026-03-29%20183024.png";
 
 export default function HeroSection() {
   const scrollTo = (href) => {
