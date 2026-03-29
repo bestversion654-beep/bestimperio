@@ -1,14 +1,8 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Wifi, Wind, Coffee, Tv, Bath, BedDouble, Maximize2, ChevronLeft, ChevronRight, X } from "lucide-react";
+import { Wifi, Wind, Coffee, Tv, Bath, BedDouble, Maximize2, ChevronLeft, ChevronRight } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-<<<<<<< HEAD
 import api from "@/config/api";
-=======
-import axios from "axios";
-
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
->>>>>>> 13412ab8749f8fc6a70ea46c62b0613254000ca4
 
 const amenityIcons = {
   "King Bed": BedDouble,
@@ -29,11 +23,7 @@ export default function RoomsSection() {
   useEffect(() => {
     const fetchRooms = async () => {
       try {
-<<<<<<< HEAD
         const res = await api.get('/api/rooms');
-=======
-        const res = await axios.get(`${BACKEND_URL}/api/rooms`);
->>>>>>> 13412ab8749f8fc6a70ea46c62b0613254000ca4
         setRooms(res.data.rooms);
       } catch {
         setRooms([
@@ -104,7 +94,7 @@ export default function RoomsSection() {
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute top-4 right-4 bg-[#D4AF37] text-black px-4 py-2 text-xs uppercase tracking-widest font-semibold">
-                  From {room.price.toLocaleString()}/night
+                  From ₹{room.price.toLocaleString()}/night
                 </div>
               </div>
 
@@ -194,7 +184,7 @@ export default function RoomsSection() {
                 {selectedRoom?.name}
               </DialogTitle>
               <DialogDescription className="text-neutral-400">
-                {selectedRoom?.size} | Starting from {selectedRoom?.price?.toLocaleString()} per night
+                {selectedRoom?.size} | Starting from ₹{selectedRoom?.price?.toLocaleString()} per night
               </DialogDescription>
             </DialogHeader>
 
