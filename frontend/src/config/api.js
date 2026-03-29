@@ -12,7 +12,7 @@ console.log('🔌 API Configuration:');
 console.log('API Base URL:', API_URL);
 console.log('Environment:', process.env.NODE_ENV);
 
-// Create axios instance with base configuration
+// Create axios instance for authenticated requests (admin panel)
 const api = axios.create({
   baseURL: API_URL,
   timeout: 15000,
@@ -20,6 +20,16 @@ const api = axios.create({
     'Content-Type': 'application/json',
   },
   withCredentials: true, // For cookies (httpOnly JWT tokens)
+});
+
+// Create axios instance for public requests (no credentials needed)
+const publicApi = axios.create({
+  baseURL: API_URL,
+  timeout: 15000,
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  withCredentials: false, // No cookies needed for public endpoints
 });
 
 // Add request interceptor to attach auth token
@@ -77,4 +87,4 @@ api.interceptors.response.use(
   }
 );
 
-export { API_URL, api as default };
+export { API_URL, api as default, publicApi };

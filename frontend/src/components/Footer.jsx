@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Phone, Mail, MapPin, ShieldCheck } from "lucide-react";
 import { toast } from "sonner";
-import api from "@/config/api";
+import { publicApi } from "@/config/api";
 
 const quickLinks = [
   { label: "Home", href: "#home" },
@@ -30,7 +30,7 @@ export default function Footer() {
     }
     setLoading(true);
     try {
-      await api.post('/api/contact', form);
+      await publicApi.post('/api/contact', form);
       toast.success("Message sent successfully! We'll get back to you soon.");
       setForm({ name: "", email: "", phone: "", message: "" });
     } catch {

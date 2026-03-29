@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import api from "@/config/api";
+import { publicApi } from "@/config/api";
 import DatePickerComponent from "./DatePickerComponent";
 import BookingForm from "./BookingForm";
 
@@ -25,7 +25,7 @@ export default function FloorBooking() {
   useEffect(() => {
     const fetchFloors = async () => {
       try {
-        const res = await api.get('/api/floors');
+        const res = await publicApi.get('/api/floors');
         setFloors(res.data.floors);
       } catch (err) {
         console.error("Error fetching floors:", err);

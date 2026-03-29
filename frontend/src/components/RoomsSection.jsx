@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Wifi, Wind, Coffee, Tv, Bath, BedDouble, Maximize2, ChevronLeft, ChevronRight } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import api from "@/config/api";
+import { publicApi } from "@/config/api";
 
 const amenityIcons = {
   "King Bed": BedDouble,
@@ -23,7 +23,7 @@ export default function RoomsSection() {
   useEffect(() => {
     const fetchRooms = async () => {
       try {
-        const res = await api.get('/api/rooms');
+        const res = await publicApi.get('/api/rooms');
         setRooms(res.data.rooms);
       } catch {
         setRooms([
