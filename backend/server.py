@@ -614,17 +614,19 @@ async def startup():
 
 app.include_router(api_router)
 
-frontend_url = os.environ.get("FRONTEND_URL", "https://imperio-luxury.preview.emergentagent.com")
+frontend_url = os.environ.get("FRONTEND_URL", "https://444aa120-d21d-4af6-965f-813ddbc99bdc.preview.emergentagent.com")
 app.add_middleware(
     CORSMiddleware,
     allow_credentials=True,
     allow_origins=[
         frontend_url, 
+        "https://444aa120-d21d-4af6-965f-813ddbc99bdc.preview.emergentagent.com",
         "https://bestwesternimperio.vercel.app",  # Vercel production
         "http://localhost:3000",  # Local development
         "http://localhost:8000",  # Local API
         "http://127.0.0.1:3000",
         "http://127.0.0.1:8000",
+        "*",  # Allow all origins for testing
     ],
     allow_methods=["*"],
     allow_headers=["*"],
