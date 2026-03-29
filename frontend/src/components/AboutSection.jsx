@@ -6,7 +6,7 @@ import { BedDouble, UtensilsCrossed, Users, Sparkles } from "lucide-react";
 const ABOUT_IMG = "https://customer-assets.emergentagent.com/job_imperio-luxury/artifacts/ooypb31c_bc1f036e726111e799540a4cef95d023.jpg";
 
 const highlights = [
-  { icon: BedDouble, label: "27 Premium Rooms", desc: "Luxurious comfort" },
+  { icon: BedDouble, label: "30 Premium Rooms", desc: "Luxurious comfort" },
   { icon: Users, label: "Banquet & Event Space", desc: "Grand celebrations" },
   { icon: UtensilsCrossed, label: "In-house Restaurant", desc: "Fine dining" },
   { icon: Sparkles, label: "Comfortable Luxury Stay", desc: "Premium experience" },
@@ -45,7 +45,7 @@ export default function AboutSection() {
               <div className="absolute inset-0 border border-[#D4AF37]/20" />
               {/* Floating stat */}
               <div className="absolute -bottom-6 -right-4 md:right-6 bg-[#D4AF37] text-black p-6">
-                <span className="text-3xl font-semibold block" style={{ fontFamily: "'Playfair Display', serif" }}>27</span>
+                <span className="text-3xl font-semibold block" style={{ fontFamily: "'Playfair Display', serif" }}>30</span>
                 <span className="text-xs uppercase tracking-widest">Luxury Rooms</span>
               </div>
             </div>
@@ -61,7 +61,7 @@ export default function AboutSection() {
               About the Hotel
             </h2>
             <p className="text-base md:text-lg font-light text-neutral-400 leading-relaxed mb-10">
-              A premium hotel located at Bye Pass, Raipur Road, Hisar offering 27 luxury rooms,
+              A premium hotel located at Bye Pass, Raipur Road, Hisar offering 30 luxury rooms,
               modern amenities, banquet halls, and fine dining experience. We pride ourselves on
               delivering an unforgettable stay that blends traditional hospitality with modern luxury.
             </p>
