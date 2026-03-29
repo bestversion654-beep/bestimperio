@@ -69,10 +69,17 @@ export default function RoomsSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <p className="overline mb-4">30 Luxury Rooms</p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight text-white" style={{ fontFamily: "'Playfair Display', serif" }}>
+          <p className="overline mb-4">Accommodation</p>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight text-white mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
             Our Rooms
           </h2>
+          <div className="inline-flex items-center gap-3 bg-[#D4AF37]/10 border border-[#D4AF37]/30 px-6 py-3 rounded-sm">
+            <span className="text-4xl md:text-5xl font-bold text-[#D4AF37]" style={{ fontFamily: "'Playfair Display', serif" }}>30</span>
+            <div className="text-left">
+              <p className="text-white text-sm md:text-base font-medium">Luxury Rooms</p>
+              <p className="text-neutral-400 text-xs">Available for booking</p>
+            </div>
+          </div>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
