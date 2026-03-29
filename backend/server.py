@@ -351,15 +351,16 @@ async def public_rooms():
     deluxe_rooms = [r for r in rooms if r.get("category") == "Deluxe"]
     executive_rooms = [r for r in rooms if r.get("category") == "Executive"]
     deluxe_img = "https://customer-assets.emergentagent.com/job_imperio-luxury/artifacts/980zdopb_c0ce331a7c5311e894780266fbcf4d94.jpg"
+    executive_img = "https://customer-assets.emergentagent.com/job_code-explorer-192/artifacts/9py6ri5y_02b5364f-753b-45dd-9073-bc8148b4a990.avif"
     return {"rooms": [
         {"id": "deluxe", "name": "Deluxe Room", "price": deluxe_rooms[0]["price"] if deluxe_rooms else 4500,
-         "description": "Spacious deluxe room with modern amenities, plush bedding, and a stunning city view.",
+         "description": "Spacious deluxe room with modern amenities, plush bedding, and a stunning city view. Part of our collection of 30 luxury rooms.",
          "amenities": ["King Bed", "City View", "WiFi", "AC", "Mini Bar", "Room Service", "Smart TV", "Rain Shower"],
          "images": [deluxe_img], "size": "350 sq ft"},
         {"id": "executive", "name": "Executive Room", "price": executive_rooms[0]["price"] if executive_rooms else 6500,
-         "description": "Premium executive suite with separate living area, luxury furnishings, and panoramic views.",
+         "description": "Premium executive suite with separate living area, luxury furnishings, and panoramic views. Part of our collection of 30 luxury rooms.",
          "amenities": ["King Bed", "Panoramic View", "WiFi", "AC", "Mini Bar", "Room Service", "Smart TV", "Bathtub", "Lounge Area", "Work Desk"],
-         "images": [deluxe_img], "size": "500 sq ft"}
+         "images": [executive_img], "size": "500 sq ft"}
     ]}
 
 @api_router.get("/floors")

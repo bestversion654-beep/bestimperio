@@ -29,16 +29,16 @@ export default function RoomsSection() {
         setRooms([
           {
             id: "deluxe", name: "Deluxe Room", price: 4500,
-            description: "Spacious deluxe room with modern amenities.",
+            description: "Spacious deluxe room with modern amenities. Part of our collection of 30 luxury rooms.",
             amenities: ["King Bed", "WiFi", "AC", "Mini Bar", "Smart TV", "Rain Shower"],
             images: ["https://customer-assets.emergentagent.com/job_imperio-luxury/artifacts/980zdopb_c0ce331a7c5311e894780266fbcf4d94.jpg"],
             size: "350 sq ft"
           },
           {
             id: "executive", name: "Executive Room", price: 6500,
-            description: "Premium executive suite with separate living area.",
+            description: "Premium executive suite with separate living area. Part of our collection of 30 luxury rooms.",
             amenities: ["King Bed", "WiFi", "AC", "Mini Bar", "Smart TV", "Bathtub", "Lounge Area"],
-            images: ["https://customer-assets.emergentagent.com/job_imperio-luxury/artifacts/980zdopb_c0ce331a7c5311e894780266fbcf4d94.jpg"],
+            images: ["https://customer-assets.emergentagent.com/job_code-explorer-192/artifacts/9py6ri5y_02b5364f-753b-45dd-9073-bc8148b4a990.avif"],
             size: "500 sq ft"
           }
         ]);
@@ -69,7 +69,7 @@ export default function RoomsSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <p className="overline mb-4">Accommodation</p>
+          <p className="overline mb-4">30 Luxury Rooms</p>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight text-white" style={{ fontFamily: "'Playfair Display', serif" }}>
             Our Rooms
           </h2>
