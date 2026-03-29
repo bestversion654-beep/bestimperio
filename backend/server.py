@@ -392,12 +392,12 @@ async def get_rooms_availability(check_in: str, check_out: str, floor: Optional[
     if check_out_date <= check_in_date:
         raise HTTPException(status_code=400, detail="Check-out date must be after check-in date")
     
-    # Find all bookings that overlap with requested dates
+    # Find all bookings that overlap with requested dates (limit to 1000 for safety)
     overlapping_bookings = await db.bookings.find({
         "check_in": {"$lt": check_out},
         "check_out": {"$gt": check_in},
         "status": {"$in": ["confirmed", "pending"]}
-    }).to_list(None)
+    }).to_list(1000)
     
     booked_room_numbers = [b["room_number"] for b in overlapping_bookings]
     
@@ -406,7 +406,7 @@ async def get_rooms_availability(check_in: str, check_out: str, floor: Optional[
     if floor:
         query["floor"] = floor
     
-    rooms = await db.rooms.find(query).sort("floor", 1).sort("room_number", 1).to_list(None)
+    rooms = await db.rooms.find(query).sort("floor", 1).sort("room_number", 1).to_list(100)
     
     # Build response with availability info
     available_rooms = []
@@ -535,8 +535,8 @@ async def get_booking_details(booking_id: str):
 
 @api_router.get("/bookings/email/{email}")
 async def get_bookings_by_email(email: str):
-    """Get all bookings for a customer by email"""
-    bookings = await db.bookings.find({"customer_email": email}).sort("created_at", -1).to_list(None)
+    """Get all bookings for a customer by email (limited to 100 most recent)"""
+    bookings = await db.bookings.find({"customer_email": email}).sort("created_at", -1).to_list(100)
     return {"email": email, "bookings": [serialize_doc(b) for b in bookings]}
 
 @api_router.put("/bookings/{booking_id}/cancel")
@@ -614,20 +614,21 @@ async def startup():
 
 app.include_router(api_router)
 
-frontend_url = os.environ.get("FRONTEND_URL", "https://444aa120-d21d-4af6-965f-813ddbc99bdc.preview.emergentagent.com")
+frontend_url = os.environ.get("FRONTEND_URL", "")
+cors_origins = [
+    frontend_url,
+    "http://localhost:3000",
+    "http://localhost:8000",
+    "http://127.0.0.1:3000",
+    "http://127.0.0.1:8000",
+]
+# Filter out empty strings
+cors_origins = [origin for origin in cors_origins if origin]
+
 app.add_middleware(
     CORSMiddleware,
     allow_credentials=True,
-    allow_origins=[
-        frontend_url, 
-        "https://444aa120-d21d-4af6-965f-813ddbc99bdc.preview.emergentagent.com",
-        "https://bestwesternimperio.vercel.app",  # Vercel production
-        "http://localhost:3000",  # Local development
-        "http://localhost:8000",  # Local API
-        "http://127.0.0.1:3000",
-        "http://127.0.0.1:8000",
-        "*",  # Allow all origins for testing
-    ],
+    allow_origins=cors_origins if cors_origins else ["*"],
     allow_methods=["*"],
     allow_headers=["*"],
 )

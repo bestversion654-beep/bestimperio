@@ -4,8 +4,12 @@ import { setToken, removeToken, getToken } from "@/utils/auth";
 
 const AuthContext = createContext(null);
 
-// API URL with fallback
-const API = process.env.REACT_APP_BACKEND_URL || 'https://bestwesternimperio-1.onrender.com';
+// API URL - Must be set via environment variable
+const API = process.env.REACT_APP_BACKEND_URL;
+
+if (!API) {
+  console.error('❌ REACT_APP_BACKEND_URL is not set in AuthContext!');
+}
 
 console.log('🔐 AuthContext: API URL =', API);
 

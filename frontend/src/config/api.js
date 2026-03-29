@@ -1,8 +1,12 @@
 import axios from 'axios';
 import { getToken, removeToken } from '@/utils/auth';
 
-// Backend API base URL - Production by default
-const API_URL = process.env.REACT_APP_BACKEND_URL || 'https://bestwesternimperio-1.onrender.com';
+// Backend API base URL - Must be set via environment variable
+const API_URL = process.env.REACT_APP_BACKEND_URL;
+
+if (!API_URL) {
+  console.error('❌ REACT_APP_BACKEND_URL is not set!');
+}
 
 console.log('🔌 API Configuration:');
 console.log('API Base URL:', API_URL);
