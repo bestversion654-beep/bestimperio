@@ -351,7 +351,7 @@ async def public_rooms():
     deluxe_rooms = [r for r in rooms if r.get("category") == "Deluxe"]
     executive_rooms = [r for r in rooms if r.get("category") == "Executive"]
     deluxe_img = "https://customer-assets.emergentagent.com/job_imperio-luxury/artifacts/980zdopb_c0ce331a7c5311e894780266fbcf4d94.jpg"
-    executive_img = "https://customer-assets.emergentagent.com/job_code-explorer-192/artifacts/9py6ri5y_02b5364f-753b-45dd-9073-bc8148b4a990.avif"
+    executive_img = "https://customer-assets.emergentagent.com/job_code-explorer-192/artifacts/iflp1ojs_Screenshot%202026-03-29%20181047.png"
     return {"rooms": [
         {"id": "deluxe", "name": "Deluxe Room", "price": deluxe_rooms[0]["price"] if deluxe_rooms else 4500,
          "description": "Spacious deluxe room with modern amenities, plush bedding, and a stunning city view. Part of our collection of 30 luxury rooms.",

@@ -38,7 +38,7 @@ export default function RoomsSection() {
             id: "executive", name: "Executive Room", price: 6500,
             description: "Premium executive suite with separate living area. Part of our collection of 30 luxury rooms.",
             amenities: ["King Bed", "WiFi", "AC", "Mini Bar", "Smart TV", "Bathtub", "Lounge Area"],
-            images: ["https://customer-assets.emergentagent.com/job_code-explorer-192/artifacts/9py6ri5y_02b5364f-753b-45dd-9073-bc8148b4a990.avif"],
+            images: ["https://customer-assets.emergentagent.com/job_code-explorer-192/artifacts/iflp1ojs_Screenshot%202026-03-29%20181047.png"],
             size: "500 sq ft"
           }
         ]);
