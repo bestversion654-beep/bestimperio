@@ -80,3 +80,7 @@ memory/test_credentials.md
 
 # Mobile development cache
 frontend/node_modules/.cache/default-development/*.pack
+-e 
+# Environment files
+*.env
+*.env.*
