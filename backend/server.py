@@ -13,9 +13,9 @@ from pydantic import BaseModel, Field, ConfigDict
 from typing import List, Optional
 
 # MongoDB
-mongo_url = os.environ['MONGO_URL']
-client = AsyncIOMotorClient(mongo_url)
-db = client[os.environ['DB_NAME']]
+#mongo_url = os.environ['MONGO_URL']
+#client = AsyncIOMotorClient(mongo_url)
+#db = client[os.environ['DB_NAME']]
 
 app = FastAPI()
 api_router = APIRouter(prefix="/api")
